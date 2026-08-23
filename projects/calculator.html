@@ -9,9 +9,18 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Python Calculator | Muhammad Sadiq</title>
+    <meta
+        name="description"
+        content="Muhammad Sadiq's interactive web calculator built with HTML, CSS and JavaScript.">
+
+    <title>Web Calculator | Muhammad Sadiq</title>
+
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
 
         * {
             margin: 0;
@@ -20,35 +29,58 @@
         }
 
 
+        /* =========================
+           BODY
+        ========================= */
+
         body {
+
             font-family: Arial, sans-serif;
 
             min-height: 100vh;
 
-            background: #050b18;
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(59, 130, 246, 0.18),
+                    transparent 45%
+                ),
+                #050b18;
 
             color: white;
 
             display: flex;
 
-            align-items: center;
-
             justify-content: center;
 
-            padding: 20px;
+            align-items: center;
+
+            padding: 30px 20px;
+
         }
 
+
+        /* =========================
+           CONTAINER
+        ========================= */
 
         .container {
+
             width: 100%;
 
-            max-width: 450px;
+            max-width: 430px;
 
             text-align: center;
+
         }
 
 
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
         .back {
+
             display: inline-block;
 
             margin-bottom: 25px;
@@ -58,85 +90,148 @@
             text-decoration: none;
 
             font-weight: bold;
+
+            transition: 0.3s;
+
         }
 
 
         .back:hover {
+
             color: white;
+
+            transform: translateX(-4px);
+
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .badge {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: rgba(59, 130, 246, 0.12);
+
+            border: 1px solid rgba(96, 165, 250, 0.3);
+
+            color: #60a5fa;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
         }
 
 
         h1 {
+
             font-size: 38px;
 
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+
         }
 
 
         .description {
+
             color: #a8b2c3;
 
+            line-height: 1.6;
+
             margin-bottom: 30px;
+
         }
 
+
+        /* =========================
+           CALCULATOR
+        ========================= */
 
         .calculator {
-            background: #0d1930;
 
-            border: 1px solid
-                rgba(255,255,255,0.12);
+            background: rgba(13, 25, 48, 0.95);
 
-            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.12);
 
-            padding: 25px;
+            border-radius: 24px;
+
+            padding: 22px;
 
             box-shadow:
-                0 20px 50px
-                rgba(0,0,0,0.4);
+                0 25px 70px rgba(0,0,0,0.45);
+
+            backdrop-filter: blur(15px);
+
         }
 
 
+        /* =========================
+           DISPLAY
+        ========================= */
+
         #display {
+
             width: 100%;
 
-            height: 75px;
+            height: 90px;
 
             margin-bottom: 20px;
 
-            padding: 15px;
+            padding: 15px 20px;
 
-            border: none;
+            border: 1px solid rgba(255,255,255,0.08);
 
-            border-radius: 12px;
+            border-radius: 16px;
 
-            background: #050b18;
+            background: #030817;
 
             color: white;
 
-            font-size: 30px;
+            font-size: 32px;
 
             text-align: right;
 
             outline: none;
+
         }
 
 
+        /* =========================
+           BUTTON GRID
+        ========================= */
+
         .buttons {
+
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 10px;
+            gap: 11px;
+
         }
 
 
+        /* =========================
+           BUTTONS
+        ========================= */
+
         .buttons button {
+
             height: 65px;
 
-            border: none;
+            border: 1px solid rgba(255,255,255,0.05);
 
-            border-radius: 12px;
+            border-radius: 15px;
 
             background: #172642;
 
@@ -148,43 +243,190 @@
 
             cursor: pointer;
 
-            transition: 0.2s;
+            transition:
+                transform 0.15s ease,
+                background 0.15s ease,
+                box-shadow 0.15s ease;
+
         }
 
 
         .buttons button:hover {
-            background: #263b60;
 
-            transform: translateY(-2px);
+            background: #22385c;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.25);
+
         }
 
 
+        .buttons button:active {
+
+            transform: scale(0.94);
+
+        }
+
+
+        /* =========================
+           SPECIAL BUTTONS
+        ========================= */
+
         .operator {
+
             background: #2563eb !important;
+
+        }
+
+
+        .operator:hover {
+
+            background: #3b82f6 !important;
+
         }
 
 
         .clear {
+
             background: #dc2626 !important;
+
+        }
+
+
+        .clear:hover {
+
+            background: #ef4444 !important;
+
         }
 
 
         .equals {
+
             background: #16a34a !important;
+
+        }
+
+
+        .equals:hover {
+
+            background: #22c55e !important;
+
         }
 
 
         .zero {
+
             grid-column: span 2;
+
         }
 
 
+        /* =========================
+           TECHNOLOGIES
+        ========================= */
+
+        .technologies {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .technologies span {
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: rgba(59,130,246,0.1);
+
+            border: 1px solid rgba(59,130,246,0.25);
+
+            color: #60a5fa;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         .footer {
+
             margin-top: 25px;
 
             color: #69758a;
 
             font-size: 14px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 20px 12px;
+
+            }
+
+
+            h1 {
+
+                font-size: 32px;
+
+            }
+
+
+            .calculator {
+
+                padding: 16px;
+
+            }
+
+
+            .buttons {
+
+                gap: 8px;
+
+            }
+
+
+            .buttons button {
+
+                height: 60px;
+
+                border-radius: 13px;
+
+            }
+
+
+            #display {
+
+                height: 80px;
+
+                font-size: 28px;
+
+            }
+
         }
 
     </style>
@@ -194,23 +436,48 @@
 
 <body>
 
+
     <div class="container">
 
-        <a href="../index.html" class="back">
+
+        <!-- BACK -->
+
+        <a
+            href="../index.html"
+            class="back">
+
             ← Back to Portfolio
+
         </a>
 
 
-        <h1>🧮 Python Calculator</h1>
+        <!-- TITLE -->
+
+        <span class="badge">
+
+            FIRST WEB PROJECT
+
+        </span>
+
+
+        <h1>
+            Web Calculator
+        </h1>
 
 
         <p class="description">
-            My first calculator project while learning
-            programming and software development.
+
+            My first interactive web project,
+            built while learning HTML, CSS and
+            JavaScript.
+
         </p>
 
 
+        <!-- CALCULATOR -->
+
         <div class="calculator">
+
 
             <input
                 type="text"
@@ -221,123 +488,226 @@
 
             <div class="buttons">
 
+
+                <!-- ROW 1 -->
+
                 <button
                     class="clear"
                     onclick="clearDisplay()">
+
                     AC
+
                 </button>
 
-                <button onclick="deleteNumber()">
+
+                <button
+                    onclick="deleteNumber()">
+
                     DEL
+
                 </button>
+
 
                 <button
                     class="operator"
                     onclick="addOperator('%')">
+
                     %
+
                 </button>
+
 
                 <button
                     class="operator"
                     onclick="addOperator('/')">
+
                     ÷
+
                 </button>
 
 
-                <button onclick="addNumber('7')">
+                <!-- ROW 2 -->
+
+                <button
+                    onclick="addNumber('7')">
+
                     7
+
                 </button>
 
-                <button onclick="addNumber('8')">
+
+                <button
+                    onclick="addNumber('8')">
+
                     8
+
                 </button>
 
-                <button onclick="addNumber('9')">
+
+                <button
+                    onclick="addNumber('9')">
+
                     9
+
                 </button>
+
 
                 <button
                     class="operator"
                     onclick="addOperator('*')">
+
                     ×
+
                 </button>
 
 
-                <button onclick="addNumber('4')">
+                <!-- ROW 3 -->
+
+                <button
+                    onclick="addNumber('4')">
+
                     4
+
                 </button>
 
-                <button onclick="addNumber('5')">
+
+                <button
+                    onclick="addNumber('5')">
+
                     5
+
                 </button>
 
-                <button onclick="addNumber('6')">
+
+                <button
+                    onclick="addNumber('6')">
+
                     6
+
                 </button>
+
 
                 <button
                     class="operator"
                     onclick="addOperator('-')">
+
                     −
+
                 </button>
 
 
-                <button onclick="addNumber('1')">
+                <!-- ROW 4 -->
+
+                <button
+                    onclick="addNumber('1')">
+
                     1
+
                 </button>
 
-                <button onclick="addNumber('2')">
+
+                <button
+                    onclick="addNumber('2')">
+
                     2
+
                 </button>
 
-                <button onclick="addNumber('3')">
+
+                <button
+                    onclick="addNumber('3')">
+
                     3
+
                 </button>
+
 
                 <button
                     class="operator"
                     onclick="addOperator('+')">
+
                     +
+
                 </button>
 
+
+                <!-- ROW 5 -->
 
                 <button
                     class="zero"
                     onclick="addNumber('0')">
+
                     0
+
                 </button>
 
-                <button onclick="addNumber('.')">
+
+                <button
+                    onclick="addNumber('.')">
+
                     .
+
                 </button>
+
 
                 <button
                     class="equals"
                     onclick="calculate()">
+
                     =
+
                 </button>
+
 
             </div>
 
         </div>
 
 
+        <!-- TECHNOLOGIES -->
+
+        <div class="technologies">
+
+            <span>HTML</span>
+
+            <span>CSS</span>
+
+            <span>JavaScript</span>
+
+        </div>
+
+
         <p class="footer">
+
             Built by Muhammad Sadiq 🇳🇬
+
         </p>
+
 
     </div>
 
 
     <script>
 
-        let display =
+
+        // =========================
+        // DISPLAY
+        // =========================
+
+        const display =
             document.getElementById("display");
 
 
+        // =========================
+        // ADD NUMBER
+        // =========================
+
         function addNumber(number) {
 
-            if (display.value === "0") {
+            if (
+                display.value === "0" ||
+                display.value === "Error"
+            ) {
 
                 display.value = number;
 
@@ -350,12 +720,49 @@
         }
 
 
+        // =========================
+        // ADD OPERATOR
+        // =========================
+
         function addOperator(operator) {
 
-            display.value += operator;
+            if (
+                display.value === "Error"
+            ) {
+
+                display.value = "0";
+
+            }
+
+
+            const lastCharacter =
+                display.value.slice(-1);
+
+
+            const operators =
+                ["+", "-", "*", "/", "%"];
+
+
+            if (
+                operators.includes(lastCharacter)
+            ) {
+
+                display.value =
+                    display.value.slice(0, -1)
+                    + operator;
+
+            } else {
+
+                display.value += operator;
+
+            }
 
         }
 
+
+        // =========================
+        // CLEAR
+        // =========================
 
         function clearDisplay() {
 
@@ -364,9 +771,16 @@
         }
 
 
+        // =========================
+        // DELETE
+        // =========================
+
         function deleteNumber() {
 
-            if (display.value.length <= 1) {
+            if (
+                display.value.length <= 1 ||
+                display.value === "Error"
+            ) {
 
                 display.value = "0";
 
@@ -380,15 +794,35 @@
         }
 
 
+        // =========================
+        // CALCULATE
+        // =========================
+
         function calculate() {
 
             try {
 
-                display.value =
+                const expression =
+                    display.value;
+
+
+                const result =
                     Function(
-                        "return " +
-                        display.value
+                        "return " + expression
                     )();
+
+
+                if (
+                    !Number.isFinite(result)
+                ) {
+
+                    display.value = "Error";
+
+                } else {
+
+                    display.value = result;
+
+                }
 
             } catch {
 
@@ -398,8 +832,71 @@
 
         }
 
+
+        // =========================
+        // KEYBOARD SUPPORT
+        // =========================
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                const key = event.key;
+
+
+                if (
+                    !isNaN(key) ||
+                    key === "."
+                ) {
+
+                    addNumber(key);
+
+                }
+
+
+                else if (
+                    ["+", "-", "*", "/", "%"]
+                    .includes(key)
+                ) {
+
+                    addOperator(key);
+
+                }
+
+
+                else if (
+                    key === "Enter" ||
+                    key === "="
+                ) {
+
+                    calculate();
+
+                }
+
+
+                else if (
+                    key === "Backspace"
+                ) {
+
+                    deleteNumber();
+
+                }
+
+
+                else if (
+                    key === "Escape"
+                ) {
+
+                    clearDisplay();
+
+                }
+
+            }
+        );
+
     </script>
+
 
 </body>
 
-  </html>
+</html>
