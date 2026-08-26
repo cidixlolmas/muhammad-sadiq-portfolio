@@ -470,4 +470,4 @@ window.addEventListener(
 
 console.log(
     "MUHAMMAD SADIQ Portfolio loaded successfully."
-);
+); 
